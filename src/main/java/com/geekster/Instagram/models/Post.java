@@ -11,20 +11,25 @@ import java.sql.Timestamp;
 
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "postId")
+@NoArgsConstructor
 public class Post {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long postId;
+    private Integer postId;
+    private Timestamp createdDate;
+    private Timestamp updatedDate;
     private String postData;
-    private Timestamp postCreatedDate;
-    private Timestamp postUpdatedDate;
-
-
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
+
+    public Post(Timestamp createdDate, Timestamp updatedDate, String postData, User user) {
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+        this.postData = postData;
+        this.user = user;
+    }
 
 }

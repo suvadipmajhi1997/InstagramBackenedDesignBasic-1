@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SignInOutput {
-    private HttpStatus status;
+    private String status;
     private String token;
 
 }

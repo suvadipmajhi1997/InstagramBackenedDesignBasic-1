@@ -9,6 +9,6 @@ import org.springframework.http.HttpStatus;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SignUpOutput {
-    HttpStatus status;
+    String status;
     String message;
 }

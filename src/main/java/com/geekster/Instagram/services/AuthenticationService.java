@@ -30,4 +30,8 @@ public class AuthenticationService {
         }else
             return false;
     }
+    public void deleteToken(String token) {
+        AuthenticationToken token1 = iTokenRepo.findFirstByToken(token);
+        iTokenRepo.deleteById(token1.getTokenId());
+    }
 }

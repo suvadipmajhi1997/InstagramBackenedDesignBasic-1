@@ -65,6 +65,11 @@
             <groupId>jakarta.xml.bind</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.liumapp.pattern</groupId>
+            <artifactId>socket-pattern</artifactId>
+            <version>v1.1.5</version>
+        </dependency>
     </dependencies>
 
 	<build>

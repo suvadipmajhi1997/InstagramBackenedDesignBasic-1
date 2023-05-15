@@ -1,54 +1,41 @@
 package com.geekster.Instagram.models;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.Length;
+
 
 
 @Data
-@NoArgsConstructor
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "userId")
+@NoArgsConstructor
+@Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userID;
-
-    @NotBlank
+    private Long userId;
+    @Column(nullable = false)
+    @NotEmpty
     private String firstName;
-    @NotBlank
+    @Column(nullable = false)
+    @NotEmpty
     private String lastName;
-    @Min(13)
+    @Column(nullable = false)
     private Integer age;
+    @Column(nullable = false)
+    @NotBlank(message = "Email is mandatory")
     @Email
-    @NotBlank
-    @Size(max = 100)
-    @Column(unique = true)
     private String email;
+    @Column(nullable = false)
 
-    @NotBlank
     private String password;
-
-    @Digits(integer = 12,fraction = 0)
-    @Length(min =10)
+    @Pattern(regexp = "\\d{2}-\\d{10}", message = "Phone number should be in the format XX-XXXXXXXXXX")
     private String phoneNumber;
 
-    public User(String firstName, String lastName, Integer age, String email, String password, String phoneNumber) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
-        this.email = email;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
-    }
 
-    public User(Long userID, String firstName, String lastName, Integer age, String email, String password, String phoneNumber) {
-        this.userID = userID;
+    public User(String firstName, String lastName, Integer age, String email, String password, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
